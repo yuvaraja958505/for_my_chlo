@@ -351,6 +351,111 @@
             padding: 0 20px;
         }
 
+        /* Gallery Section */
+        #gallery {
+            background: linear-gradient(to bottom, #fffaf0, #fff0f3);
+            position: relative;
+        }
+
+        /* Rope-style hanging gallery */
+        .rope-gallery {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .rope-gallery::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 5%;
+            right: 5%;
+            height: 6px;
+            background: linear-gradient(90deg, #8b5e3c, #6b4b2c);
+            border-radius: 6px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+        }
+
+        .rope-items {
+            display: flex;
+            justify-content: space-around;
+            gap: 26px;
+            margin-top: 40px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .rope-item {
+            position: relative;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform-origin: top center;
+            animation: swing 4s ease-in-out infinite;
+            transition: transform 0.25s ease;
+        }
+
+        .rope-item::before {
+            /* string from rope to frame */
+            content: '';
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 36px;
+            background: linear-gradient(#6b4b2c, #8b5e3c);
+            border-radius: 2px;
+        }
+
+        .frame {
+            width: 200px;
+            height: 250px;
+            background: white;
+            border-radius: 10px;
+            padding: 8px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 8px solid #4b2b12;
+        }
+
+        .frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .rope-caption {
+            margin-top: 12px;
+            font-size: 1rem;
+            color: var(--dark-red);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* slight hover pop */
+        .rope-item:hover { transform: translateY(-8px) rotate(0deg); }
+
+        /* stagger animation delays */
+        .rope-item:nth-child(1){ animation-delay: 0s; }
+        .rope-item:nth-child(2){ animation-delay: 0.12s; }
+        .rope-item:nth-child(3){ animation-delay: 0.24s; }
+        .rope-item:nth-child(4){ animation-delay: 0.36s; }
+        .rope-item:nth-child(5){ animation-delay: 0.48s; }
+
+        @keyframes swing {
+            0% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+
         .highlight {
             color: var(--primary-color);
             font-weight: 700;
@@ -1510,9 +1615,9 @@
     <!-- Progress Indicator (Replaces Navigation) -->
     <div class="progress-indicator" id="progress-indicator">
         <div class="progress-dot active" data-title="Welcome" data-target="#welcome"></div>
-        <div class="progress-dot" data-title="My Love" data-target="#proposal"></div>
-        <div class="progress-dot" data-title="Birthday Cake" data-target="#cake"></div>
-        <div class="progress-dot" data-title="Love Letters" data-target="#greeting"></div>
+        <div class="progress-dot" data-title="Our Friendship" data-target="#proposal"></div>
+        <div class="progress-dot" data-title="Celebration" data-target="#cake"></div>
+        <div class="progress-dot" data-title="Messages" data-target="#greeting"></div>
     </div>
 
     <!-- Page 1 - Welcome Page -->
@@ -1523,7 +1628,7 @@
             
             <div class="profile-image-container">
                 <div class="profile-frame"></div>
-                <img src="./img/yuva_l.jpg" alt="Beautiful Chlo" class="profile-image">
+                <img src="./img/img1.jpg" alt="Beautiful Chlo" class="profile-image">
             </div>
             
             <div class="hearts">♥ ♥ ♥</div>
@@ -1543,16 +1648,16 @@
         <div class="heart-bg" style="top: 70%; right: 5%; font-size: 2.8rem;">♥</div>
         <div class="heart-bg" style="top: 85%; left: 15%; font-size: 2.3rem;">♥</div>
         
-        <h2 class="section-title">My Heart's Proposal</h2>
+        <h2 class="section-title">My Heart's Wish</h2>
         <div class="proposal-container">
             <div class="rose-container">
                 <div class="rose-glow"></div>
-                <img src="./img/images.webp" alt="Red Rose" class="rose-img">
+                <img src="./img/img3.jpg" alt="Red Rose" class="rose-img">
             </div>
             
             <div class="proposal-content">
                 <div class="avatar-container">
-                    <img src="./img/yuva_rose.png" alt="Yuva Proposing" class="avatar-img">
+                    <img src="./img/img2.jpg" alt="Yuva Proposing" class="avatar-img">
                 </div>
                 
                 <div class="proposal-text-box">
@@ -1568,6 +1673,34 @@
                         
                         <p>On this birthday, I give you my heart, my soul, and my promise to always cherish you. <span class="highlight">Will you make me the happiest person by being mine forever?</span></p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- New Page - Memory Gallery -->
+    <section id="gallery" class="section">
+        <h2 class="section-title">Friendship Gallery</h2>
+        <div class="rope-gallery">
+            <div class="rope-items">
+                <div class="rope-item">
+                    <div class="frame"><img src="img/img1.jpg" alt="memory 1"></div>
+                    <div class="rope-caption">Friends' Night</div>
+                </div>
+                <div class="rope-item">
+                    <div class="frame"><img src="img/img2.jpg" alt="memory 2"></div>
+                    <div class="rope-caption">Fun Day Out</div>
+                </div>
+                <div class="rope-item">
+                    <div class="frame"><img src="img/img3.jpg" alt="memory 3"></div>
+                    <div class="rope-caption">Adventure Walk</div>
+                </div>
+                <div class="rope-item">
+                    <div class="frame"><img src="img/img4.jpg" alt="memory 4"></div>
+                    <div class="rope-caption">Best Moments</div>
+                </div>
+                <div class="rope-item">
+                    <div class="frame"><img src="img/img5.jpg" alt="memory 5"></div>
+                    <div class="rope-caption">Forever Friends</div>
                 </div>
             </div>
         </div>
@@ -1608,14 +1741,14 @@
 
     <!-- Page 4 - Greeting Card & Gift Page -->
     <section id="greeting" class="section">
-        <h2 class="section-title">Love Letters & Gift</h2>
+        <h2 class="section-title">Gift</h2>
         <div class="card-gift-container">
             <!-- Greeting Card -->
             <div class="greeting-card">
                 <div class="card-inner" id="card-inner">
                     <div class="card-front">
                         <h3 class="page-title">Open My Heart</h3>
-                        <p class="page-message">Click to read my love letters to you</p>
+                        <p class="page-message">Click to read to you</p>
                         <div style="font-size: 5rem; color: var(--primary-color); margin: 40px 0; animation: heartbeat 2s infinite;">
                             <i class="fas fa-heart"></i>
                         </div>
